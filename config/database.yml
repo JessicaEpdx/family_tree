@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: family_tree_development
+  template: template0
+
+test:
+  adapter: postgresql
+  database: family_tree_test
+  template: template0

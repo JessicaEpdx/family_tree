@@ -1,0 +1,22 @@
+<h1>Family Tree</h1>
+
+<form action="/" method="post">
+  <div class="form-group">
+    <label for="name">Add a person to the tree</label>
+    <input name="name" type="text">
+    <select name="sex">
+      <option name="female" value="female">Female</option>
+      <option name="male" value="male">Male</option>
+    </select>
+    <button type="submit" class="btn btn-success">Add person</button>
+  </div>
+</form>
+
+<% if @people.any? %>
+<ul><% @people.each do |person| %>
+  <li><a href="/person/<%= person.id %>"><%= person.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>You have no family.  Be sad.</p>
+<% end %>
