@@ -1,13 +1,14 @@
 class ChangesAllTheThings < ActiveRecord::Migration
   def change
-    remove_table(:mothers)
-    create_table(:marriages) do |t|
-      t.column(:spouse1_id, :int)
-      t.column(:spouse2_id, :int)
+    drop_table(:mothers)
+    create_table(:relations) do |t|
+      t.column(:type_of_relation, :varchar)
     end
 
-    create_table(:offsprings) do |t|
-      t.column(:marriage_id, :int)
-      t.column(:)
+    create_table(:relationships) do |t|
+      t.column(:person_id, :int)
+      t.column(:relation_id, :int)
+      t.column(:relationee_id, :int)
+    end
   end
 end

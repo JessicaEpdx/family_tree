@@ -26,7 +26,5 @@ end
 
 post('/person/:id') do
   @person = Person.find(params.fetch("id").to_i)
-  @mother = Mother.create(people_id: params.fetch("mother").to_i)
-  @person.mothers.new()
   erb(:person)
 end
