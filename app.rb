@@ -21,7 +21,12 @@ end
 
 get('/person/:id') do
   @person = Person.find(params.fetch("id").to_i)
-  @females = ActiveRecord::Base.connection.execute("SELECT * FROM people WHERE sex = 'female';")
-  @people = Person.all()
+  erb(:person)
+end
+
+post('/person/:id') do
+  @person = Person.find(params.fetch("id").to_i)
+  @mother = Mother.create(people_id: params.fetch("mother").to_i)
+  @person.mothers.new()
   erb(:person)
 end

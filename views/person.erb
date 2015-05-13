@@ -1,23 +1,13 @@
 <h2>You are a person <%= @person.name%>!</h2>
 
-<ul><% @people.each do |person| %>
-      <%if person.sex == "female"%>
-        <li><%= person.name %></li>
+
+<form action="/person/<%= @person.id %>" method="post">
+  <div class="form-type">
+    <select name="mother">
+      <% Person.where(sex: "female").find_each do |person|%>
+        <option value="<%= person.id %>"><%= person.name %></option>
       <% end %>
-    <% end %>
-</ul>
-
-@females = ActiveRecord::Base.connection.execute("SELECT * FROM people WHERE sex = 'female';")
-
-
-<ul><% @females.each do |female| %>
-      <li><%= female.fetch("name") %></li>
-    <% end %>
-</ul>
-
-
-<ul>
-<%Person.where(sex: "female").find_each do |person|%>
-  <li><%=person.name%></li>
-<%end%>
-</ul>
+    </select>
+    <button class= "btn btn-warning" type="submit">Select Mother</button>
+  </div>
+</form>
