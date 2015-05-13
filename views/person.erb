@@ -11,3 +11,14 @@
     <button class= "btn btn-warning" type="submit">Select Mother</button>
   </div>
 </form>
+
+<% if @mother != nil %>
+    <h3>Your Mother is <%= @mother.name %></h3>
+  <% else %>
+    <h3>You do not have a mother yet</h3>
+<% end %>
+
+<% @new_relationship.each do |relationship|%>
+<% person = Person.find(relationship.relationee_id) %>
+<%= person.name %>
+<% end%>

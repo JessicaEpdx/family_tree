@@ -12,6 +12,7 @@
 # end
 
 class Person < ActiveRecord::Base
-  has_many :relations, :through => :relationships
-  has_many :relationships
+  # has_many :relations, :through => :relationships
+  # has_many :relationships
+  has_and_belongs_to_many(:relations)
 end
